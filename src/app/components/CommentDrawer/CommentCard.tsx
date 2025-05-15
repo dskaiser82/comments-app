@@ -33,7 +33,7 @@ export const CommentCard = ({ comment, setComments }: CommentCardProps) => {
       {isAdminOrOwner && (
         <button
           onClick={() => handleDelete(comment.id)}
-          className="text-sm text-white bg-red-500 px-2 py-1 rounded-md mt-2"
+          className="text-sm text-white bg-red-500 px-2 py-1 rounded-md mt-2 cursor-pointer"
         >
           Delete
         </button>

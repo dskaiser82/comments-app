@@ -4,14 +4,14 @@ import { AddComment, GetComments } from "@/app/server/api";
 import { useState } from "react";
 import { CommentType } from "../types";
 
-export const CommentForm = ({
-  setComments,
-}: {
+type CommentFormProps = {
   setComments: (comments: CommentType[]) => void;
-}) => {
+};
+
+export const CommentForm = ({ setComments }: CommentFormProps) => {
   const [text, setText] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmitCreate = (e: React.FormEvent) => {
     AddComment(text);
     setComments(GetComments());
     setText(""); // clear input after submission
@@ -37,7 +37,7 @@ export const CommentForm = ({
 
       <div className="flex justify-end mt-2 space-x-2 text-sm">
         <button
-          onClick={handleSubmit}
+          onClick={handleSubmitCreate}
           className="bg-black hover:bg-black/80 text-white font-medium py-2 px-4 rounded-md shadow-md transition-all"
         >
           Respond
