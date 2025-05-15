@@ -19,7 +19,7 @@ export const CommentDrawer = () => {
 
   return (
     <>
-      {/* Overlay - only show when mounted and open */}
+      {/* Overlay */}
       {isOpen && (
         <div
           className="fixed inset-0 opacity-20 bg-gray-50  z-10"
