@@ -6,11 +6,6 @@ import { CommentForm } from "./CommentForm";
 import { Seed } from "@/app/server/seed";
 import { CommentCard } from "./CommentCard";
 
-interface CommentType {
-  id: string;
-  // Add other properties as needed
-}
-
 export const CommentDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [comments, setComments] = useState<CommentType[]>(Seed.comments);
@@ -21,14 +16,6 @@ export const CommentDrawer = () => {
 
   return (
     <>
-      {/* Toggle button (you can place this anywhere) */}
-      <button
-        onClick={() => setIsOpen(true)}
-        className="fixed right-4 top-4 z-20 bg-primary text-white px-3 py-2 rounded shadow"
-      >
-        Comments
-      </button>
-
       {/* Overlay - only show when mounted and open */}
       {isOpen && (
         <div

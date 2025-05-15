@@ -1,14 +1,5 @@
 import React from "react";
-
-type CommentCardProps = {
-  id: string;
-  author: string;
-  text: string;
-  date: string;
-  likes: number;
-  image: string;
-  parentId: string | null;
-};
+import { CommentType } from "../types";
 
 export const CommentCard = ({
   id,
@@ -18,7 +9,7 @@ export const CommentCard = ({
   likes,
   image,
   parentId,
-}: CommentCardProps) => {
+}: CommentType) => {
   return (
     <div className="border-t pt-4">
       <div className="flex items-center space-x-2 mb-1">
