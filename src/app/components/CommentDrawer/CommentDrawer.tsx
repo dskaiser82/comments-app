@@ -5,13 +5,15 @@ import { FaTimes } from "react-icons/fa";
 import { CommentForm } from "./CommentForm";
 import { Seed } from "@/app/server/seed";
 import { CommentCard } from "./CommentCard";
+import { SeedComments } from "@/app/server/api";
 
 export const CommentDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [comments, setComments] = useState<CommentType[]>(Seed.comments);
+  const [comments, setComments] = useState<CommentType[]>([]);
 
   useEffect(() => {
     setIsOpen(true);
+    SeedComments().then(setComments([]));
   }, []);
 
   return (
@@ -39,9 +41,10 @@ export const CommentDrawer = () => {
 
         <div className="p-4 space-y-6 overflow-y-auto h-[calc(100%-60px)]">
           <CommentForm />
-          {comments.map((comment) => (
-            <CommentCard key={comment.id} {...comment} />
-          ))}
+          {comments.length > 0 &&
+            comments.map((comment) => (
+              <CommentCard key={comment.id} {...comment} />
+            ))}
         </div>
       </div>
     </>

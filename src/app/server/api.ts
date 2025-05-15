@@ -1,10 +1,15 @@
 import { CommentType } from "../components/types";
+import { Seed } from "./seed";
 
 const COMMENTS_KEY = "comments";
 
 export const GetComments = async () => {
   const comments = localStorage.getItem(COMMENTS_KEY);
   return comments ? JSON.parse(comments) : [];
+};
+
+export const SeedComments = async () => {
+  localStorage.setItem(COMMENTS_KEY, JSON.stringify(Seed.comments));
 };
 
 export const AddComment = async (text: string) => {
