@@ -1,14 +1,21 @@
 "use client";
 
-import { AddComment } from "@/app/server/api";
+import { AddComment, GetComments } from "@/app/server/api";
 import { useEffect, useState } from "react";
+import { CommentType } from "../types";
 
-export const CommentForm = () => {
+export const CommentForm = ({
+  setComments,
+}: {
+  setComments: (comments: CommentType[]) => void;
+}) => {
   const [text, setText] = useState("");
 
-  useEffect(() => {
+  const handleSubmit = (e: React.FormEvent) => {
     AddComment(text);
-  }, [text]);
+    setComments(GetComments());
+    setText(""); // clear input after submission
+  };
 
   return (
     <div>
@@ -24,11 +31,15 @@ export const CommentForm = () => {
         className="w-full p-3 border rounded bg-gray-50 resize-none"
         placeholder="What are your thoughts?"
         rows={3}
+        value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      {text}
+
       <div className="flex justify-end mt-2 space-x-2 text-sm">
-        <button className="bg-black hover:bg-black/80 text-white font-medium py-2 px-4 rounded-md shadow-md transition-all">
+        <button
+          onClick={handleSubmit}
+          className="bg-black hover:bg-black/80 text-white font-medium py-2 px-4 rounded-md shadow-md transition-all"
+        >
           Respond
         </button>
       </div>

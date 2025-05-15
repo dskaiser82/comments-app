@@ -41,7 +41,7 @@ export const CommentDrawer = () => {
         </div>
 
         <div className="p-4 space-y-6 overflow-y-auto h-[calc(100%-60px)]">
-          <CommentForm />
+          <CommentForm setComments={setComments} />
           {comments.length > 0 &&
             comments.map((comment) => (
               <CommentCard key={comment.id} {...comment} />
