@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 import { CommentForm } from "./CommentForm";
-import { Seed } from "@/app/server/seed";
 import { CommentCard } from "./CommentCard";
-import { SeedComments } from "@/app/server/api";
+import { GetComments, SeedComments } from "@/app/server/api";
+import { CommentType } from "../types";
 
 export const CommentDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +13,8 @@ export const CommentDrawer = () => {
 
   useEffect(() => {
     setIsOpen(true);
-    SeedComments().then(setComments([]));
+    SeedComments();
+    setComments(GetComments());
   }, []);
 
   return (

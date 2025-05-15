@@ -3,33 +3,32 @@ import { Seed } from "./seed";
 
 const COMMENTS_KEY = "comments";
 
-export const GetComments = async () => {
+export const GetComments = (): CommentType[] => {
+  if (typeof window === "undefined") return []; // guard for SSR
   const comments = localStorage.getItem(COMMENTS_KEY);
   return comments ? JSON.parse(comments) : [];
 };
 
-export const SeedComments = async () => {
+export const SeedComments = () => {
+  if (typeof window === "undefined") return;
   localStorage.setItem(COMMENTS_KEY, JSON.stringify(Seed.comments));
 };
 
-export const AddComment = async (text: string) => {
-  const newComment = {
-    id: new Date().getTime().toString(),
+export const AddComment = (text: string) => {
+  if (typeof window === "undefined") return;
+
+  const newComment: CommentType = {
+    id: Date.now().toString(),
     author: "Admin",
-    text: text,
-    date: new Date().getTime().toString(),
+    text,
+    date: new Date().toISOString(),
     likes: 0,
     image: "https://miro.medium.com/v2/resize:fill:32:32/0*POKNPqwG7KllHKi8.",
     parentId: null,
   };
 
-  const comments = await GetComments();
+  const comments = GetComments();
   const updatedComments = [newComment, ...comments];
 
-  try {
-    const data = JSON.stringify(updatedComments);
-    localStorage.setItem(COMMENTS_KEY, data);
-  } catch (err) {
-    console.error("Failed to save comments:", err);
-  }
+  localStorage.setItem(COMMENTS_KEY, JSON.stringify(updatedComments));
 };
