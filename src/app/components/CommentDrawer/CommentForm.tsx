@@ -1,6 +1,15 @@
 "use client";
 
+import { AddComment } from "@/app/server/api";
+import { useEffect, useState } from "react";
+
 export const CommentForm = () => {
+  const [text, setText] = useState("");
+
+  useEffect(() => {
+    AddComment(text);
+  }, [text]);
+
   return (
     <div>
       <div className="flex items-center space-x-3 mb-2">
@@ -15,9 +24,13 @@ export const CommentForm = () => {
         className="w-full p-3 border rounded bg-gray-50 resize-none"
         placeholder="What are your thoughts?"
         rows={3}
+        onChange={(e) => setText(e.target.value)}
       />
+      {text}
       <div className="flex justify-end mt-2 space-x-2 text-sm">
-        <button className="bg-primary  px-3 py-1 rounded">Respond</button>
+        <button className="bg-black hover:bg-black/80 text-white font-medium py-2 px-4 rounded-md shadow-md transition-all">
+          Respond
+        </button>
       </div>
     </div>
   );
