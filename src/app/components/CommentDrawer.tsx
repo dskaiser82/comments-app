@@ -46,7 +46,7 @@ export const CommentDrawer = () => {
           <div>
             <div className="flex items-center space-x-3 mb-2">
               <img
-                src="/avatar.png"
+                src="https://miro.medium.com/v2/resize:fill:32:32/0*POKNPqwG7KllHKi8."
                 className="w-8 h-8 rounded-full"
                 alt="User"
               />
