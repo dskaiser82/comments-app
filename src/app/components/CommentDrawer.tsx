@@ -1,10 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 
 export const CommentDrawer = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    setIsOpen(true);
+  }, []);
 
   return (
     <>
@@ -16,12 +20,9 @@ export const CommentDrawer = () => {
         Comments
       </button>
 
-      {/* Overlay */}
+      {/* Overlay - only show when mounted and open */}
       {isOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-10"
-          onClick={() => setIsOpen(false)}
-        />
+        <div className="fixed inset-0  z-10" onClick={() => setIsOpen(false)} />
       )}
 
       {/* Slide-out drawer */}
