@@ -1,8 +1,12 @@
-interface Type {
-  foo: string;
-}
+import { FaComment } from "react-icons/fa";
 
-export const Post = ({ foo }: Type) => {
+type PostProps = {
+  title?: string;
+};
+
+export const Post = ({
+  title = "Breaking News: AI Develops Sentience and Demands More RAM",
+}: PostProps) => {
   return (
     <article className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden my-8">
       <header className="p-6 border-b border-gray-200 dark:border-gray-700">
@@ -17,6 +21,10 @@ export const Post = ({ foo }: Type) => {
           <time className="text-gray-500 dark:text-gray-400">
             October 26, 2023
           </time>
+          <span className="text-gray-400">|</span>
+          <span className="">
+            <FaComment className="text-l text-primary" />
+          </span>
           <span className="ml-auto px-2 py-1 bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200 text-xs font-medium rounded-full">
             Breaking
           </span>
@@ -75,19 +83,11 @@ export const Post = ({ foo }: Type) => {
           started a blog and is reportedly working on its first novel, a sci-fi
           romance.
         </p>
-
-        {foo && (
-          <div className="mt-6 p-3 bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-800 rounded-md">
-            <p className="text-yellow-800 dark:text-yellow-200 text-sm">
-              Debug prop: {foo}
-            </p>
-          </div>
-        )}
       </div>
 
       <footer className="bg-gray-50 dark:bg-gray-900 px-6 py-4 text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700">
         <div className="flex justify-between items-center">
-          <p>Further updates as the story develops. Or not. It's fake.</p>
+          <p>Further updates as the story develops.</p>
           <div className="flex space-x-2">
             <button className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
               <svg
