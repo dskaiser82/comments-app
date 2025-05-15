@@ -3,9 +3,17 @@
 import { useState, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 import { CommentForm } from "./CommentForm";
+import { CommentCard } from "./CommentCard";
+import { Seed } from "@/app/server/seed";
+
+interface CommentType {
+  id: string;
+  // Add other properties as needed
+}
 
 export const CommentDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [comments, setComments] = useState<CommentType[]>(Seed.comments);
 
   useEffect(() => {
     setIsOpen(true);
@@ -44,23 +52,9 @@ export const CommentDrawer = () => {
 
         <div className="p-4 space-y-6 overflow-y-auto h-[calc(100%-60px)]">
           <CommentForm />
-          {/* Example comment */}
-          <div className="border-t pt-4">
-            <div className="flex items-center space-x-2 mb-1">
-              <img
-                src="/avatar2.png"
-                className="w-6 h-6 rounded-full"
-                alt="Commenter"
-              />
-              <div className="text-sm font-medium">mohamad shahkhajeh</div>
-              <span className="text-xs text-gray-500">· 3 hours ago</span>
-            </div>
-            <p className="text-sm text-gray-700 mt-1">
-              The author does a great job of capturing the intensity and
-              discipline required in high school sports, especially wrestling...
-            </p>
-            <button className="text-sm text-blue-500 mt-2">Reply</button>
-          </div>
+          {comments.map((comment) => (
+            <CommentCard key={comment.id} />
+          ))}
         </div>
       </div>
     </>
