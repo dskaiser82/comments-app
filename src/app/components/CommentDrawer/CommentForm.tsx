@@ -1,7 +1,7 @@
 "use client";
 
 import { AddComment, GetComments } from "@/app/server/api";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CommentType } from "../types";
 
 export const CommentForm = ({

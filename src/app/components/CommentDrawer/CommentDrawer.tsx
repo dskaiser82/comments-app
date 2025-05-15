@@ -44,7 +44,11 @@ export const CommentDrawer = () => {
           <CommentForm setComments={setComments} />
           {comments.length > 0 &&
             comments.map((comment) => (
-              <CommentCard key={comment.id} {...comment} />
+              <CommentCard
+                key={comment.id}
+                setComments={setComments}
+                comment={comment}
+              />
             ))}
         </div>
       </div>

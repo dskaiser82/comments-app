@@ -9,6 +9,15 @@ export const GetComments = (): CommentType[] => {
   return comments ? JSON.parse(comments) : [];
 };
 
+export const DeleteComment = (id: string) => {
+  if (typeof window === "undefined") return;
+
+  const comments = JSON.parse(localStorage.getItem(COMMENTS_KEY) || "[]");
+  const filtered = comments.filter((comment: CommentType) => comment.id !== id);
+
+  localStorage.setItem(COMMENTS_KEY, JSON.stringify(filtered));
+};
+
 export const SeedComments = () => {
   if (typeof window === "undefined") return;
   localStorage.setItem(COMMENTS_KEY, JSON.stringify(Seed.comments));
