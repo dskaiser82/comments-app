@@ -22,7 +22,10 @@ export const CommentDrawer = () => {
 
       {/* Overlay - only show when mounted and open */}
       {isOpen && (
-        <div className="fixed inset-0  z-10" onClick={() => setIsOpen(false)} />
+        <div
+          className="fixed inset-0 opacity-20 bg-gray-50  z-10"
+          onClick={() => setIsOpen(false)}
+        />
       )}
 
       {/* Slide-out drawer */}
