@@ -13,26 +13,6 @@ export const TopNav = ({ title = "The Gazette" }: TopNavProps) => {
             {title}
           </Link>
         </div>
-        <div className="flex space-x-4">
-          <Link
-            href="/"
-            className="hover:text-light transition-colors font-inter text-sm"
-          >
-            Home
-          </Link>
-          <Link
-            href="/comments"
-            className="hover:text-light transition-colors font-inter text-sm"
-          >
-            Comments
-          </Link>
-          <Link
-            href="/about"
-            className="hover:text-light transition-colors font-inter text-sm"
-          >
-            About
-          </Link>
-        </div>
       </div>
     </nav>
   );

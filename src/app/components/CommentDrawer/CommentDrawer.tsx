@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 import { CommentForm } from "./CommentForm";
-import { CommentCard } from "./CommentCard";
 import { Seed } from "@/app/server/seed";
+import { CommentCard } from "./CommentCard";
 
 interface CommentType {
   id: string;
@@ -53,7 +53,7 @@ export const CommentDrawer = () => {
         <div className="p-4 space-y-6 overflow-y-auto h-[calc(100%-60px)]">
           <CommentForm />
           {comments.map((comment) => (
-            <CommentCard key={comment.id} />
+            <CommentCard key={comment.id} {...comment} />
           ))}
         </div>
       </div>
