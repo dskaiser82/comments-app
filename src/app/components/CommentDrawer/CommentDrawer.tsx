@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
+import { CommentForm } from "./CommentForm";
 
 export const CommentDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,29 +43,7 @@ export const CommentDrawer = () => {
         </div>
 
         <div className="p-4 space-y-6 overflow-y-auto h-[calc(100%-60px)]">
-          {/* Comment form */}
-          <div>
-            <div className="flex items-center space-x-3 mb-2">
-              <img
-                src="https://miro.medium.com/v2/resize:fill:32:32/0*POKNPqwG7KllHKi8."
-                className="w-8 h-8 rounded-full"
-                alt="User"
-              />
-              <span className="text-sm font-medium">Dan Kaiser</span>
-            </div>
-            <textarea
-              className="w-full p-3 border rounded bg-gray-50 resize-none"
-              placeholder="What are your thoughts?"
-              rows={3}
-            />
-            <div className="flex justify-end mt-2 space-x-2 text-sm">
-              <button className="text-gray-500">Cancel</button>
-              <button className="bg-primary text-white px-3 py-1 rounded">
-                Respond
-              </button>
-            </div>
-          </div>
-
+          <CommentForm />
           {/* Example comment */}
           <div className="border-t pt-4">
             <div className="flex items-center space-x-2 mb-1">

@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { CommentDrawer } from "../CommentDrawer";
+import { CommentDrawer } from "../CommentDrawer/CommentDrawer";
 
 interface MainProps {
   children: ReactNode;
